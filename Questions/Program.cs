@@ -24,7 +24,10 @@
         {
 
             //-------------Queue------------
-            QueueQuestions.QueueOperations();
+            QueueQuestions.StackUsingQueue_PushEasy();
+            //QueueQuestions.StackUsingQueue_PopEasy();
+            //QueueQuestions.QueueUsingStacks();
+            //QueueQuestions.QueueOperations();
 
 
             //-------------Stack------------
