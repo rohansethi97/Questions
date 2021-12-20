@@ -22,9 +22,12 @@
 
         static void Execute()
         {
+            //-------------Binary Tree---------
+            BinaryTreeQuestions.Traversal();
+
 
             //-------------Queue------------
-            QueueQuestions.StackUsingQueue_PushEasy();
+            //QueueQuestions.StackUsingQueue_PushEasy();
             //QueueQuestions.StackUsingQueue_PopEasy();
             //QueueQuestions.QueueUsingStacks();
             //QueueQuestions.QueueOperations();
