@@ -23,7 +23,18 @@
         static void Execute()
         {
             //-------------Binary Tree---------
-            BinaryTreeQuestions.Traversal();
+            BinaryTreeQuestions.LeftView();
+            //BinaryTreeQuestions.RightView();
+            //BinaryTreeQuestions.IsBalanced();
+            //BinaryTreeQuestions.SumReplacement();
+            //BinaryTreeQuestions.Diameter();
+            //BinaryTreeQuestions.HeightOfTree();
+            //BinaryTreeQuestions.SumNodes();
+            //BinaryTreeQuestions.SumAtKthLevel();
+            //BinaryTreeQuestions.LevelOrderTraversal();
+            //BinaryTreeQuestions.ConstructBinaryTreeFromPostOrder();
+            //BinaryTreeQuestions.ConstructBinaryTreeFromPreorder();
+            //BinaryTreeQuestions.Traversal();
 
 
             //-------------Queue------------
