@@ -4,31 +4,6 @@ namespace Questions
 {
     public class BinaryTreeQuestions
     {
-        /// <summary>
-        /// Question: Binary tree preorder traversal
-        /// </summary>
-        ///         
-        public static void Traversal()
-        {
-            /*
-                1
-               2  3 
-             4 5  6 7
-
-            */
-            var node = new TreeNode<int>(1);
-            node.Left = new TreeNode<int>(2);
-            node.Right = new TreeNode<int>(3);
-            node.Left.Left = new TreeNode<int>(4);
-            node.Left.Right = new TreeNode<int>(5);
-            node.Right.Left = new TreeNode<int>(6);
-            node.Right.Right = new TreeNode<int>(7);
-
-            PrintPreorder(node); // 1 2 4 5 3 6 7
-            PrintInorder(node); // 4 2 5 1 6 3 7
-            PrintPostorder(node); // 4 5 2 6 7 3 1
-        }
-
         /*
         Properties of a binary tree
             
@@ -54,6 +29,30 @@ namespace Questions
             log2(n+1)+1 levels
          */
 
+        /// <summary>
+        /// Question: Binary tree preorder traversal
+        /// </summary>
+        ///         
+        public static void Traversal()
+        {
+            /*
+                1
+               2  3 
+             4 5  6 7
+
+            */
+            var node = new TreeNode<int>(1);
+            node.Left = new TreeNode<int>(2);
+            node.Right = new TreeNode<int>(3);
+            node.Left.Left = new TreeNode<int>(4);
+            node.Left.Right = new TreeNode<int>(5);
+            node.Right.Left = new TreeNode<int>(6);
+            node.Right.Right = new TreeNode<int>(7);
+
+            PrintPreorder(node); // 1 2 4 5 3 6 7
+            PrintInorder(node); // 4 2 5 1 6 3 7
+            PrintPostorder(node); // 4 5 2 6 7 3 1
+        }
 
         /// <summary>
         /// Question: Construct Binary tree from inorder and preorder
@@ -511,7 +510,7 @@ namespace Questions
             LeftView(tree);
         }
 
-        public static void LeftView(TreeNode<int> root)
+        private static void LeftView(TreeNode<int> root)
         {
             if (root == null) return;
             var queue = new Queue<TreeNode<int>>();
@@ -534,9 +533,350 @@ namespace Questions
 
         }
 
+        /// <summary>
+        /// Flatten a binary tree: result should be preorder equivalent of a linked list, where each node would have left as null and right to the next node
+        /// Condition: do it inplace
+        /// </summary>
+        /// Problem
+        /// Input: 
+        ///     1
+        ///   2   3
+        /// 4 5   6 7
+        /// Output:
+        ///     1
+        ///      2 
+        ///       4 
+        ///        5
+        ///         3
+        ///          6
+        ///           7
+
+        public static void Flatten()
+        {
+            var tree = CreateBinaryTree();
+            PrintInorder(tree);
+            Flatten(tree);
+            PrintInorder(tree);
+        }
+        private static void Flatten(TreeNode<int> root)
+        {
+            if (root == null) return;
+            
+            Flatten(root.Left);
+            if (root.Left != null)
+            {
+                var temp = root.Right;
+                root.Right = root.Left;
+                root.Left = null;
+
+                var tail = root.Right;
+                while (tail.Right!=null)
+                {
+                    tail = tail.Right;
+                }
+                tail.Right = temp;
+            }
+
+            Flatten(root.Right);
+        }
+
+        /// <summary>
+        /// For any given binary tree, find nodes at k distance from a target node, 
+        /// the node can be present in sub tree of current node, can be its ancestors or ancestor's sub trees
+        /// </summary>
+        /// Input: 
+        ///       1
+        ///   2       3
+        /// 4   5    6 7
+        ///    8 9
+        ///       10
+        /// If target node is 5 and k is 1 then answer would be {8, 9, 2}
+        /// If target node is 5 and k is 2, then answer would be {4, 1, 10}
+        /// 
+        /// Approach:
+        /// Case: Finding nodes in subtree
+        ///         1. Recursively find children in the left and right sub tree, 
+        ///         2. pass a variable n (n=k) which will keep decrementing until n == 0
+        ///         3. when n == 0, it is at k distance from target node
+        /// Case: Finding nodes in the ancestors
+        ///         1. Start from root, recursively find distance from target
+        ///         2. When distance == k, then print current node
+        ///         3. when distance is less than k, call the first method for it's other sub tree subtracting the distance
+        ///         4. When distance is 0, call for its subtrees
+        /// 
+        /// This will require two methods, first method to find children in subtrees
+        /// Second method will get distance from target and then call first method after making distance adjustments
+        public static void FindNodesAtKDistance()
+        {
+            var tree = CreateBinaryTree();
+            var k = Helper.ReadN();
+            var target = tree.Left.Right;
+            FindNodesAtKDistance(tree, target, k);
+        }
+
+        /*
+               1
+           2       3
+         4   5    6 7
+            8 9
+               10
+         */
+        private static int FindNodesAtKDistance(TreeNode<int> root, TreeNode<int> target, int distance)
+        {
+            if (root == null)
+            {
+                return -1;
+            }
+
+            if (root == target)
+            {
+                FindNodesAtKDistanceInSubtree(root.Left, distance - 1);
+                FindNodesAtKDistanceInSubtree(root.Right, distance - 1);
+                return 1;
+            }
+
+            var currentDistance = FindNodesAtKDistance(root.Left, target, distance);
+            
+            if (currentDistance != -1 && currentDistance <= distance)
+            {
+                if (currentDistance == distance)
+                {
+                    Helper.WriteLine(root.Value);
+                }
+                else
+                {
+                    FindNodesAtKDistanceInSubtree(root.Right, distance - currentDistance - 1);
+                }
+
+                return currentDistance + 1;
+            }
+
+            currentDistance = FindNodesAtKDistance(root.Right, target, distance);
+            if (currentDistance != -1 && currentDistance <= distance)
+            {
+                if (currentDistance == distance)
+                {
+                    Helper.WriteLine(root.Value);
+                }
+                else
+                {
+                    FindNodesAtKDistanceInSubtree(root.Left, distance - currentDistance - 1);
+                }
+
+                return currentDistance + 1;
+            }
+
+            return -1;
+        }
+
+        private static void FindNodesAtKDistanceInSubtree(TreeNode<int> root, int n)
+        {
+            if (root == null || n < 0)
+                return;
+            
+            if (n == 0)
+            {
+                Helper.WriteLine(root.Value);
+            }
+            else
+            {
+                FindNodesAtKDistanceInSubtree(root.Left, n - 1);
+                FindNodesAtKDistanceInSubtree(root.Right, n - 1);
+            }
+        }
+
+        /// <summary>
+        /// Returns maximum possible sum across a path in a binary tree
+        /// </summary>
+        /// Approach
+        ///     1. for each node, the max till that point would be either one of the following
+        ///         1. Value of current node
+        ///         2. Value of current node + left sub tree max sum (recursive)
+        ///         3. Value of current node + right sub tree max sum (recursive)
+        ///         4. Value of current node + left sub tree max sum + right sub tree max sum
+        ///     2. Get max of these values and assign it to global maximum
+        ///     3. When global maximum in updated, return max of 1,2,3 (but not 4) from recursive method to help calculate 2 & 3
+        ///         * 4 should not be returned as it considers both left and right, so it cannot consider ancestors
+        public static void MaxPossibleSum()
+        {
+            var tree = CreateBinaryTree();
+            int maxSum = 0;
+            CalculateMaxPossibleSum(tree, ref maxSum);
+            Helper.WriteLine(maxSum);
+        }
+
+        private static int CalculateMaxPossibleSum(TreeNode<int> root, ref int sum)
+        {
+            if (root == null) return 0;
+
+            var currValue = root.Value;
+            var left = CalculateMaxPossibleSum(root.Left, ref sum);
+            var right = CalculateMaxPossibleSum(root.Right, ref sum);
+
+            var leftSum = left + currValue;
+            var rightSum = right + currValue;
+            var bothSum = currValue + left + right;
+
+            sum = Math.Max(sum, GetMaxOfFour(currValue, rightSum, leftSum, bothSum));
+
+            return GetMaxOfThree(currValue, leftSum, rightSum);
+        }
+
+        private static int GetMaxOfFour(int val1, int val2, int val3, int val4)
+        {
+            return Math.Max(
+                    Math.Max(val1, val2),
+                    Math.Max(val3, val4)
+                );
+        }
+
+        private static int GetMaxOfThree(int val1, int val2, int val3)
+        {
+            return Math.Max(
+                    Math.Max(val1, val2),
+                    val3
+                );
+        }
+
+        /// <summary>
+        /// Find the lowest common ancestor
+        /// </summary>
+        /// Input:
+        ///    1
+        ///  2   3
+        /// 4 5 6 7
+        /// 
+        /// 4,5 => 2
+        /// 4,6 => 1
+        /// 
+        /// Approach: 
+        /// 1. Find path to element 1, store it in list
+        /// 2. Find path to element 1, store it in list
+        /// 3. Compare said lists till the point of divergence
+        public static void LowestCommonAncestor()
+        {
+            var tree = CreateBinaryTree();
+            var val1 = Helper.ReadN();
+            var val2 = Helper.ReadN();
+
+            var listPath1 = new LinkedList<int>();
+            var listPath2 = new LinkedList<int>();
+            var divergence = -1;
+
+            if (GetPath(tree, listPath1, val1) && GetPath(tree, listPath2, val2))
+            {
+                int n = listPath1.GetLength();
+                for (int i = 1; i < n; i++)
+                {
+                    if (listPath1.GetNthValue(i) != listPath2.GetNthValue(i))
+                    {
+                        divergence = i - 1;
+                        break;
+                    }
+                }
+            }
+
+            Helper.WriteLine(listPath1.GetNthValue(divergence));
+        }
+
+        // To avoid reversing the linked list afterwards, we can follow approach
+        // 1. Add current element assuming it does belong in the path
+        // 2. If get path return false, only then we pop it, else let it as is
+        private static bool GetPath(TreeNode<int> root, LinkedList<int> list, int target)
+        {
+            if (root == null)
+            {
+                return false;
+            }
+            
+            list.AddToTail(root.Value);
+            if (root.Value == target) return true;
+            var isCurrentNodeInPath = GetPath(root.Left, list, target) || GetPath(root.Right, list, target);
+
+            if (!isCurrentNodeInPath) list.DeleteFromTail();
+
+            return isCurrentNodeInPath;
+        }
+
+        /// <summary>
+        /// Find shortest distance between 2 nodes
+        /// </summary>
+        /// Approach
+        /// Shortest distance between 2 nodes can be derived by getting the LCA (lowest common ancestor)
+        /// 1. Find LCA
+        /// 2. Calculate distance of n1 from LCA
+        /// 3. Calculate distance of n2 from LCA
+        /// 4. answer is n1 + n2
+        /// 
+        public static void ShortestDistanceBetweenTwoNodes()
+        {
+            var root = CreateBinaryTree();
+            Helper.WriteLine("Enter element1: ");
+            var n1 = Helper.ReadN();
+            Helper.WriteLine("Enter element2: ");
+            var n2 = Helper.ReadN();
+
+            var lowestCommonAncestor = GetLCA(root, n1, n2);
+            var n1Distance = GetDistance(lowestCommonAncestor, n1);
+            var n2Distance = GetDistance(lowestCommonAncestor, n2);
+
+            Helper.WriteLine($"Shortest distance is: {n1Distance + n2Distance}");
+        }
+
+        /*
+               1
+            2     3
+           4 5   6 7
+         */
+        /// <summary>
+        /// Approach is to get lca using a single function, it can also be achieved using method above
+        /// </summary>
+        private static TreeNode<int> GetLCA(TreeNode<int> root, int n1, int n2)
+        {
+            if (root == null) return null;
+            if (root.Value == n1 || root.Value == n2) return root;
+            
+            var left = GetLCA(root.Left, n1, n2);
+            var right = GetLCA(root.Right, n1, n2);
+
+            if (left != null && right != null)
+            {
+                return root;
+            }
+            else if (left != null)
+            {
+                return GetLCA(root.Left, n1, n2);
+            }
+            else if (right != null)
+            {
+                return GetLCA(root.Right, n1, n2);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /*
+            1
+          2   3
+         4 5 6 7
+         */
+        private static int GetDistance(TreeNode<int> root, int key, int height=0)
+        {
+            if (root == null) return -1;
+
+            if (root.Value == key) return height;
+
+            var left = GetDistance(root.Left, key, height+1);
+            var right = GetDistance(root.Right, key, height+1);
+
+            return left != -1 ? left : right;
+        }
+
         #region Helpers
 
-        private static TreeNode<int> CreateBinaryTree()
+        public static TreeNode<int> CreateBinaryTree()
         {
             Helper.WriteLine("Choose 1 for auto, 0 for manual");
             var choice = Helper.ReadN();
@@ -552,13 +892,24 @@ namespace Questions
                     postorder = new int[] { 4, 5, 2, 6, 7, 3, 1 };
                     break;
                 case 2:
-                    ///         1
-                    ///        2
-                    ///       3 5
-                    ///      4   6
-                    ///           7
+                    //         1
+                    //        2
+                    //       3 5
+                    //      4   6
+                    //           7
                     inorder = new int[] { 4, 3, 2, 5, 6, 7, 1 };
                     postorder = new int[] { 4, 3, 7, 6, 5, 2, 1 };
+                    break;
+                case 3:
+                    /*
+                              1
+                          2       3
+                        4   5    6 7
+                           8 9
+                              10
+                        */
+                    inorder = new int[] { 4, 2, 8, 5, 9, 10, 1, 6, 3, 7 };
+                    postorder = new int[] { 4, 8, 10, 9, 5, 2, 6, 7, 3, 1 };
                     break;
                 default:
                     inorder = Helper.ReadElementsInOneLine();
@@ -570,7 +921,7 @@ namespace Questions
             return ConstructBinaryTreeFromPostorder(inorder, postorder, 0, inorder.Length - 1, ref idx);
         }
 
-        private static void PrintPreorder(TreeNode<int> node)
+        public static void PrintPreorder(TreeNode<int> node)
         {
             Console.Write("Preorder: ");
             Preorder(node);
@@ -585,7 +936,7 @@ namespace Questions
             Preorder(node.Right);
         }
 
-        private static void PrintInorder(TreeNode<int> node)
+        public static void PrintInorder(TreeNode<int> node)
         {
             Console.Write("Inorder: ");
             Inorder(node);
@@ -600,7 +951,7 @@ namespace Questions
             Inorder(node.Right);
         }
 
-        private static void PrintPostorder(TreeNode<int> node)
+        public static void PrintPostorder(TreeNode<int> node)
         {
             Console.Write("Postorder: ");
             Postorder(node);

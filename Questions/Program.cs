@@ -22,8 +22,19 @@
 
         static void Execute()
         {
+            //-------------Binary Search Tree---------
+            BinarySearchTreeQuestions.DeleteFromBST();
+            //BinarySearchTreeQuestions.SearchInBST();
+            //BinarySearchTreeQuestions.InsertIntoBST();
+
+
             //-------------Binary Tree---------
-            BinaryTreeQuestions.LeftView();
+            //BinaryTreeQuestions.ShortestDistanceBetweenTwoNodes();
+            //BinaryTreeQuestions.LowestCommonAncestor();
+            //BinaryTreeQuestions.MaxPossibleSum();
+            //BinaryTreeQuestions.FindNodesAtKDistance();
+            //BinaryTreeQuestions.Flatten();
+            //BinaryTreeQuestions.LeftView();
             //BinaryTreeQuestions.RightView();
             //BinaryTreeQuestions.IsBalanced();
             //BinaryTreeQuestions.SumReplacement();

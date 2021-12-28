@@ -56,6 +56,12 @@ namespace Questions
             return list == null;
         }
 
+        public void DeleteFromTail()
+        {
+            var index = this.GetLength();
+            this.DeleteNth(index - 1);
+        }
+
         public void DeleteNth(int index)
         {
             if (list == null)
