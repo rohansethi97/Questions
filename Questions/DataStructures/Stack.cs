@@ -28,5 +28,10 @@
         {
             return List.IsEmpty();
         }
+
+        public int Size()
+        {
+            return List.GetLength();
+        }
     }
 }

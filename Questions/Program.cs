@@ -23,7 +23,15 @@
         static void Execute()
         {
             //-------------Binary Search Tree---------
-            BinarySearchTreeQuestions.DeleteFromBST();
+            //BinarySearchTreeQuestions.CatalanNumbers();
+            //BinarySearchTreeQuestions.LargestBSTInBT();
+            //BinarySearchTreeQuestions.RecoverBST();
+            //BinarySearchTreeQuestions.IdenticalBST();
+            //BinarySearchTreeQuestions.ZigZagTraversal();
+            //BinarySearchTreeQuestions.BalancedBSTFromSortedArray();
+            //BinarySearchTreeQuestions.IsBST();
+            //BinarySearchTreeQuestions.BSTFromPreOrder();
+            //BinarySearchTreeQuestions.DeleteFromBST();
             //BinarySearchTreeQuestions.SearchInBST();
             //BinarySearchTreeQuestions.InsertIntoBST();
 
