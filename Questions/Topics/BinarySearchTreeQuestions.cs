@@ -360,18 +360,153 @@ namespace Questions
         /// <summary>
         /// 2 nodes of a BST are swapped, restore the BST to its full glory
         /// </summary>
+        /// Approach
+        /// Inorder of a BST is always in ascending order, we can traverse through the BST using inorder
+        /// to catch which elements are swapped
+        /// 
+        /// There are 2 cases
+        /// 
+        /// Case 1: BST Inorder -> 1 5 3 4 2 6 7
+        ///     Here, 5 & 2 are swapped
+        /// Case 2: BST Inorder ->  1 2 4 3 5 6 7
+        ///     here 3 & 4 are swapped
+        ///     
+        /// We can maintain the following 3 pointers, which point to occurence where BST inorder property is violated i.e. prev < curr
+        /// 
+        /// 1. 1st occurrence 
+        ///     i.e. case1: pointer to 5, case 2: pointer to 4
+        /// 
+        /// 2. Element right after first occurence (to handle case 2.) 
+        ///     Case1: pointer to 4, case2: pointer to 3
+        ///     
+        /// 3. Last occurence (to handle case 1)
+        ///     Case1: pointer to 2, Case2: null (since there would only be one violation)
+        /// 
+        /// For case1: swap 1 & 3, 
+        /// for case2: swap 1 & 2
         public static void RecoverBST()
         {
-            throw new NotImplementedException();
+            var arr = Helper.ReadElementsInOneLine();
+            var tree = BalancedBSTFromSortedArray(arr, 0, arr.Length - 1);
+            PrintInorder(tree);
+
+            var temp = tree.Left.Value;
+            tree.Left.Value = tree.Left.Left.Value;
+            tree.Left.Left.Value = temp;
+
+            PrintInorder(tree);
+
+            TreeNode<int> first = null;
+            TreeNode<int> second = null;
+            TreeNode<int> third = null;
+            TreeNode<int> prev = null;
+            CalculatePointers(tree, ref prev, ref first, ref second, ref third);
+
+            if (third == null) third = second;
+
+            temp = first.Value;
+            first.Value = third.Value;
+            third.Value = temp;
+
+            PrintInorder(tree);
+        }
+
+        private static void CalculatePointers(TreeNode<int> root, ref TreeNode<int> prev, ref TreeNode<int> first, ref TreeNode<int> second, ref TreeNode<int> third)
+        {
+            if (root == null) return;
+            CalculatePointers(root.Left, ref prev, ref first, ref second, ref third);
+
+            if (prev != null)
+            {
+                if (root.Value < prev.Value)
+                {
+                    if (first == null)
+                    {
+                        first = prev;
+                        second = root;
+                    }
+                    else
+                    {
+                        third = root;
+                    }
+                }
+
+                prev = root;
+            }
+            else { prev = root; }
+
+            CalculatePointers(root.Right, ref prev, ref first, ref second, ref third);
         }
 
         /// <summary>
+        /// Find largest size of BST in a BT, 
+        /// Note: we will only consider only those BSTs which are from root to leaf nodes, that root node can be at any level of a BT
+        /// Example: 
+        /// Input:      3
+        ///           2    4  
+        ///          9 8  6 5   
+        /// Output: 1, although 2-3-4 is a BST, but we will only consider BSTs that have leaf nodes at bottom
         /// 
+        /// Input:       4
+        ///           2    6  
+        ///          1 3  7  8     
+        /// Output: 3, as 1-2-3 are BST, but right sub tree of 4 is not
         /// </summary>
+        /// 
+        /// Approach: 
+        /// 1. Traverse the nodes from bottom to the top
+        /// 2. For each node, calculate the following
+        ///    min, max, ans, isBST
+        /*
+            T1:
+                     9
+                  4     11
+                2  5   8  13
+              1 3   6
+              
+            Inorder: 1 2 3 4 5 6 9 8 11 13
+            Preorder: 1 3 2 6 5 4 8 13 11 9
+         */    
+
         public static void LargestBSTInBT()
         {
-            throw new NotImplementedException();
+            var tree = CreateBT();
+
+            (int min , int max, int ans, bool isBST) info = LargestBSTInBT(tree);
+            Helper.WriteLine(info.ans);
         }
+
+        private static (int min, int max, int ans, bool isBST) LargestBSTInBT(TreeNode<int> root)
+        {
+            if (root == null) return (int.MaxValue, int.MinValue, 0, true);
+            if (root.Left == null && root.Right == null) return (root.Value, root.Value, 1, true);
+
+            var leftInfo = LargestBSTInBT(root.Left);
+            var rightInfo = LargestBSTInBT(root.Right);
+
+            (int min, int max, int ans, bool isBST) currInfo;
+
+            if (
+                leftInfo.isBST && 
+                rightInfo.isBST && 
+                root.Value > leftInfo.max && 
+                root.Value < rightInfo.min
+                )
+            {
+                currInfo.min = Math.Min(leftInfo.min, root.Value);
+                currInfo.max = Math.Min(rightInfo.max, root.Value);
+                currInfo.ans = leftInfo.ans + rightInfo.ans + 1;
+                currInfo.isBST = true;
+            }
+            else
+            {
+                currInfo = (0, 0, Math.Max(leftInfo.ans, rightInfo.ans), false);
+            }
+
+            return currInfo;
+        }
+
+
 
         /// <summary>
         /// 
@@ -390,6 +525,11 @@ namespace Questions
             foreach (int i in arr)
                 root = InsertIntoBST(root, i);
             return root;
+        }
+
+        private static TreeNode<int> CreateBT()
+        {
+            return BinaryTreeQuestions.CreateBinaryTree();
         }
 
         private static void PrintPreorder(TreeNode<int> node)

@@ -24,7 +24,7 @@
         {
             //-------------Binary Search Tree---------
             //BinarySearchTreeQuestions.CatalanNumbers();
-            //BinarySearchTreeQuestions.LargestBSTInBT();
+            BinarySearchTreeQuestions.LargestBSTInBT();
             //BinarySearchTreeQuestions.RecoverBST();
             //BinarySearchTreeQuestions.IdenticalBST();
             //BinarySearchTreeQuestions.ZigZagTraversal();
