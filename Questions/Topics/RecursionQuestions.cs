@@ -388,6 +388,53 @@ namespace Questions
             AllSubsequencesASCII(input.Substring(1), output + input[0] + ((int)input[0]).ToString());
         }
         // ------------------------------------
+
+        /// <summary>
+        /// Get Nth Catalan number using recursion
+        /// </summary>
+        /// This solution can be further improved by hashing / memoization
+        /*
+         * Catalan numbers are a sequence of natural numbers that occur in 
+         * various counting problems often involving recursively defined objects
+         * 
+         * Applications:
+         *    Possible BSTs
+         *    Paranthesis combinations
+         *    possible forests
+         *    ways of triangulations
+         *    possible paths in matrix
+         *    divide circle using n chords
+         *    dyck words of given lenth
+         *    etc
+         *  
+         * 
+         * Catalan number is series defined by the following formula
+         * 
+         * C0 = 1
+         * C1 = 1
+         * C2 = C0*C1 + C1*C0 = 2
+         * C3 = C0*C2 + C1*C1 + C2*C0 = 5
+         */
+
+        public static void NthCatalanNumber()
+        {
+            var n = Helper.ReadN();
+            int result = NthCatalanNumber(n);
+            Helper.WriteLine(result);
+        }
+
+        private static int NthCatalanNumber(int n)
+        {
+            if (n == 0 || n == 1) return 1;
+
+            var sum = 0;
+            for (int i = 0; i < n; i++)
+            {
+                sum += NthCatalanNumber(i) * NthCatalanNumber(n - 1 - i);
+            }
+
+            return sum;
+        }
     }
 }
 

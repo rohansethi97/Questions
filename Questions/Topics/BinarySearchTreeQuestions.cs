@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Questions
 {
@@ -357,9 +358,6 @@ namespace Questions
             return IsIdentical(root1.Left, root2.Left) && IsIdentical(root1.Right, root2.Right);
         }
 
-        /// <summary>
-        /// 2 nodes of a BST are swapped, restore the BST to its full glory
-        /// </summary>
         /// Approach
         /// Inorder of a BST is always in ascending order, we can traverse through the BST using inorder
         /// to catch which elements are swapped
@@ -466,13 +464,13 @@ namespace Questions
               
             Inorder: 1 2 3 4 5 6 9 8 11 13
             Preorder: 1 3 2 6 5 4 8 13 11 9
-         */    
+         */
 
         public static void LargestBSTInBT()
         {
             var tree = CreateBT();
 
-            (int min , int max, int ans, bool isBST) info = LargestBSTInBT(tree);
+            (int min, int max, int ans, bool isBST) info = LargestBSTInBT(tree);
             Helper.WriteLine(info.ans);
         }
 
@@ -487,9 +485,9 @@ namespace Questions
             (int min, int max, int ans, bool isBST) currInfo;
 
             if (
-                leftInfo.isBST && 
-                rightInfo.isBST && 
-                root.Value > leftInfo.max && 
+                leftInfo.isBST &&
+                rightInfo.isBST &&
+                root.Value > leftInfo.max &&
                 root.Value < rightInfo.min
                 )
             {
@@ -509,11 +507,63 @@ namespace Questions
 
 
         /// <summary>
-        /// 
+        /// Generate all possible BSTs with N nodes 
         /// </summary>
-        public static void CatalanNumbers()
+        /// Approach: We can use catalan numbers to print possible BSTs with N nodes, 
+
+        /// Refer to RecursionQuestions.NthCatalanNumber for more info on series 
+
+        /// Approach:
+        /// 
+        internal static void AllPossibleBSTForN()
         {
-            throw new NotImplementedException();
+            var n = Helper.ReadN();
+            var bstList = ConstructBSTWithNNodes(1, n);
+
+            foreach (var bst in bstList)
+                PrintPreorder(bst);
+        }
+
+        /*
+         * 
+         * Simplification
+         *  Create a function to get Trees with N nodes
+         *  Till N, we will have n different root nodes, for each of them: 
+         *      Get left tree nodes (using above function, make sure to pass element smaller than root)
+         *      right tree nodes (using above function, make sure to pass element larger than root)
+         *      create root node, put left and right
+         */
+        private static List<TreeNode<int>> ConstructBSTWithNNodes(int start, int end)
+        {
+            var list = new List<TreeNode<int>>();
+            if (start > end)
+            {
+                list.Add(null);
+                return list;
+            }
+
+            for (int i = start; i <= end; i++)
+            {
+                var leftSubtrees = ConstructBSTWithNNodes(start, i - 1);
+                var rightSubtrees = ConstructBSTWithNNodes(i+1, end);
+
+                for(int j = 0; j < leftSubtrees.Count; j++)
+                {
+                    var left = leftSubtrees[j];
+                    for (int k = 0; k < rightSubtrees.Count; k++)
+                    {
+                        var right = rightSubtrees[k];
+                        var node = new TreeNode<int>(i);
+                        
+                        node.Left = left;
+                        node.Right = right;
+
+                        list.Add(node);
+                    }
+                }
+            }
+
+            return list;
         }
 
         #region Helpers

@@ -22,9 +22,29 @@
 
         static void Execute()
         {
+
+            // ------------ Hashing --------------
+            //HashingQuestions.Chaining();
+            //HashingQuestions.LinearProbing();
+            //HashingQuestions.QuadraticProbing();
+            //HashingQuestions.VerticalOrderPrint();
+            //HashingQuestions.NumberOfSubarraysWithSumZero();
+            //HashingQuestions.SlidingWindowTechnique();
+            //HashingQuestions.TopKMostFrequentElements();
+            //HashingQuestions.SudokuSolver();
+
+            // ------------ Heaps ----------------
+            //HeapsQuestions.InsertIntoHeap();
+            //HeapsQuestions.DeleteFromHeap();
+            //HeapsQuestions.HeapSort();
+            //HeapsQuestions.Heapify();
+            //HeapsQuestions.MedianOfRunningStream();
+            //HeapsQuestions.MergeKSortedArrays();
+            //HeapsQuestions.SmallestSequenceWithSumAtleastK();
+
             //-------------Binary Search Tree---------
-            //BinarySearchTreeQuestions.CatalanNumbers();
-            BinarySearchTreeQuestions.LargestBSTInBT();
+            //BinarySearchTreeQuestions.AllPossibleBSTForN();
+            //BinarySearchTreeQuestions.LargestBSTInBT();
             //BinarySearchTreeQuestions.RecoverBST();
             //BinarySearchTreeQuestions.IdenticalBST();
             //BinarySearchTreeQuestions.ZigZagTraversal();
@@ -92,6 +112,7 @@
             //SortingQuestions.MergeSort();
 
             //--------------Recursion-----------
+            //RecursionQuestions.NthCatalanNumber();
             //RecursionQuestions.SumTillN();
             //RecursionQuestions.NToPowerP();
             //RecursionQuestions.FactorialOfN();
