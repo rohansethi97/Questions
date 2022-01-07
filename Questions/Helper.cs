@@ -48,7 +48,7 @@
                 ans += i + " ";
             }
 
-            WriteLine($"[{ans}]");
+            WriteLine($"[ {ans}]");
         }
 
         public static void WriteLine(bool s)

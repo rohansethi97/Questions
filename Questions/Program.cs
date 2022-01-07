@@ -23,20 +23,21 @@
         static void Execute()
         {
             //-------------Searching-------------
-            //SearchingQuestions.LinearSearch(); //todo_question
-            //SearchingQuestions.BinarySearch(); //todo_question
-
-            
-            //--------------Array----------------
-            //ArrayQuestions.
+            //SearchingQuestions.LinearSearch();
+            //SearchingQuestions.BinarySearch();
 
 
             //-------------Sorting------------
-            //SortingQuestions.BubbleSort(); //todo_question
-            //SortingQuestions.InsertionSort(); //todo_question
-            //SortingQuestions.SelectionSort(); //todo_question
+            //SortingQuestions.BubbleSort();
+            //SortingQuestions.SelectionSort();
+            //SortingQuestions.InsertionSort();
             //SortingQuestions.QuickSort();
             //SortingQuestions.MergeSort();
+
+
+            //--------------Array----------------
+            //ArrayQuestions.MaxTillI();
+
 
 
             //--------------Recursion-----------
@@ -145,8 +146,6 @@
             //HashingQuestions.FirstKDistinctElements();
             //HashingQuestions.NumberOfSubarraysWithSumZero(); //todo_question
             //HashingQuestions.SudokuSolver(); //todo_question
-
-
         }
     }
 }

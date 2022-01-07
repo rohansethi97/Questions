@@ -3,30 +3,57 @@
     public class SearchingQuestions
     {
         /// <summary>
-        /// Search
+        /// Linear Search
+        /// Complexity: O(n)
         /// </summary>
-        public static void Search()
+        public static void LinearSearch()
         {
             var arr = Helper.ReadElementsInOneLine();
-            var n = arr.Length;
+            var ele = Helper.ReadN();
 
-            var ans = Search(arr);
+            var ans = LinearSearch(arr, ele);
             Helper.WriteLine(ans);
         }
 
-        private static int Search(int[] arr)
+        private static int LinearSearch(int[] arr, int ele)
         {
-            return 1;
+            for (int i = 0; i < arr.Length; i++)
+                if (arr[i] == ele)
+                    return i;
+
+            return -1;
         }
 
-        internal static void LinearSearch()
+        /// <summary>
+        /// Binary Search
+        /// Complexity O(Logn)
+        /// </summary>
+        public static void BinarySearch()
         {
-            throw new System.NotImplementedException();
+            var arr = Helper.ReadElementsInOneLine();
+            var ele = Helper.ReadN();
+
+            var ans = BinarySearch(arr, ele);
+            Helper.WriteLine(ans);
         }
 
-        internal static void BinarySearch()
+        // 0 1 2 3 4 5 6 7
+        private static int BinarySearch(int[] arr, int ele)
         {
-            throw new System.NotImplementedException();
+            var start = 0;
+            var end = arr.Length - 1;
+            var mid = (start + end) / 2;
+
+            while (start <= end)
+            {
+                if (arr[mid] == ele) return mid;
+                else if (arr[mid] < ele) start = mid + 1;
+                else end = mid - 1;
+
+                mid = (start + end) / 2;
+            }
+
+            return -1;
         }
 
     }
