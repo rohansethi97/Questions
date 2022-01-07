@@ -2,6 +2,21 @@
 {
     class SortingQuestions
     {
+        public static void BubbleSort()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public static void SelectionSort()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public static void InsertionSort()
+        {
+            throw new System.NotImplementedException();
+        }
+
         /// ------------------------------------
         /// <summary>
         /// Question: Merge Sort

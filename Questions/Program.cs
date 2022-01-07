@@ -22,97 +22,24 @@
 
         static void Execute()
         {
+            //-------------Searching-------------
+            //SearchingQuestions.LinearSearch(); //todo_question
+            //SearchingQuestions.BinarySearch(); //todo_question
 
-            // ------------ Hashing --------------
-            //HashingQuestions.Chaining();
-            //HashingQuestions.LinearProbing();
-            //HashingQuestions.QuadraticProbing();
-            //HashingQuestions.VerticalOrderPrint();
-            //HashingQuestions.TopKMostFrequentElements();
-            //HashingQuestions.FirstKDistinctElements();
-            //HashingQuestions.NumberOfSubarraysWithSumZero();
-            //HashingQuestions.SudokuSolver();
+            
+            //--------------Array----------------
+            //ArrayQuestions.
 
-            // ------------ Heaps ----------------
-            //HeapsQuestions.InsertIntoHeap();
-            //HeapsQuestions.DeleteFromHeap();
-            //HeapsQuestions.HeapSort();
-            //HeapsQuestions.Heapify();
-            //HeapsQuestions.MedianOfRunningStream();
-            //HeapsQuestions.MergeKSortedArrays();
-            //HeapsQuestions.SmallestSequenceWithSumAtleastK();
-
-            //-------------Binary Search Tree---------
-            //BinarySearchTreeQuestions.AllPossibleBSTForN();
-            //BinarySearchTreeQuestions.LargestBSTInBT();
-            //BinarySearchTreeQuestions.RecoverBST();
-            //BinarySearchTreeQuestions.IdenticalBST();
-            //BinarySearchTreeQuestions.ZigZagTraversal();
-            //BinarySearchTreeQuestions.BalancedBSTFromSortedArray();
-            //BinarySearchTreeQuestions.IsBST();
-            //BinarySearchTreeQuestions.BSTFromPreOrder();
-            //BinarySearchTreeQuestions.DeleteFromBST();
-            //BinarySearchTreeQuestions.SearchInBST();
-            //BinarySearchTreeQuestions.InsertIntoBST();
-
-
-            //-------------Binary Tree---------
-            //BinaryTreeQuestions.ShortestDistanceBetweenTwoNodes();
-            //BinaryTreeQuestions.LowestCommonAncestor();
-            //BinaryTreeQuestions.MaxPossibleSum();
-            //BinaryTreeQuestions.FindNodesAtKDistance();
-            //BinaryTreeQuestions.Flatten();
-            //BinaryTreeQuestions.LeftView();
-            //BinaryTreeQuestions.RightView();
-            //BinaryTreeQuestions.IsBalanced();
-            //BinaryTreeQuestions.SumReplacement();
-            //BinaryTreeQuestions.Diameter();
-            //BinaryTreeQuestions.HeightOfTree();
-            //BinaryTreeQuestions.SumNodes();
-            //BinaryTreeQuestions.SumAtKthLevel();
-            //BinaryTreeQuestions.LevelOrderTraversal();
-            //BinaryTreeQuestions.ConstructBinaryTreeFromPostOrder();
-            //BinaryTreeQuestions.ConstructBinaryTreeFromPreorder();
-            //BinaryTreeQuestions.Traversal();
-
-
-            //-------------Queue------------
-            //QueueQuestions.StackUsingQueue_PushEasy();
-            //QueueQuestions.StackUsingQueue_PopEasy();
-            //QueueQuestions.QueueUsingStacks();
-            //QueueQuestions.QueueOperations();
-
-
-            //-------------Stack------------
-            //StackQuestions.InfixToPrefix();
-            //StackQuestions.InfixToPostfix();
-            //StackQuestions.InfixToPostfix();
-            //StackQuestions.InfixToPrefix();
-            //StackQuestions.AreParenthesisBalanced();
-            //StackQuestions.PostfixEvaluation();
-            //StackQuestions.PrefixEvaluation();
-            //StackQuestions.ReverseString();
-            //StackQuestions.StackOperations();
-
-            //-------------Linked List------------
-            //LinkedListQuestions.CircularLinkedListOperations();
-            //LinkedListQuestions.DoublyLinkedListOperations();
-            //LinkedListQuestions.MoveEvenNodesToEnd();
-            //LinkedListQuestions.IntersectionOfTwoLinkedLists();
-            //LinkedListQuestions.MergeTwoSortedLinkedLists();
-            //LinkedListQuestions.AppendLastKNodesToStart();
-            //LinkedListQuestions.DetectAndRemoveCycle();
-            //LinkedListQuestions.ReverseKNodes_Recursive();
-            //LinkedListQuestions.ReverseKNodes_Iterative();
-            //LinkedListQuestions.ReverseLinkedList();
-            //LinkedListQuestions.CreateLinkedList();
 
             //-------------Sorting------------
+            //SortingQuestions.BubbleSort(); //todo_question
+            //SortingQuestions.InsertionSort(); //todo_question
+            //SortingQuestions.SelectionSort(); //todo_question
             //SortingQuestions.QuickSort();
             //SortingQuestions.MergeSort();
 
+
             //--------------Recursion-----------
-            //RecursionQuestions.NthCatalanNumber();
             //RecursionQuestions.SumTillN();
             //RecursionQuestions.NToPowerP();
             //RecursionQuestions.FactorialOfN();
@@ -129,6 +56,97 @@
             //RecursionQuestions.MoveXToEnd();
             //RecursionQuestions.AllSubsequencesOfAString();
             //RecursionQuestions.AllSubsequencesASCIIOfAString();
+            //RecursionQuestions.NthCatalanNumber();
+
+
+            //-------------Linked List------------
+            //LinkedListQuestions.CreateLinkedList();
+            //LinkedListQuestions.ReverseLinkedList();
+            //LinkedListQuestions.ReverseKNodes_Iterative();
+            //LinkedListQuestions.ReverseKNodes_Recursive();
+            //LinkedListQuestions.AppendLastKNodesToStart();
+            //LinkedListQuestions.MergeTwoSortedLinkedLists();
+            //LinkedListQuestions.IntersectionOfTwoLinkedLists();
+            //LinkedListQuestions.DetectAndRemoveCycle();
+            //LinkedListQuestions.MoveEvenNodesToEnd();
+            //LinkedListQuestions.DoublyLinkedListOperations();
+            //LinkedListQuestions.CircularLinkedListOperations();
+
+
+            //-------------Stack------------
+            //StackQuestions.StackOperations();
+            //StackQuestions.ReverseString();
+            //StackQuestions.AreParenthesisBalanced();
+            //StackQuestions.PostfixEvaluation();
+            //StackQuestions.PrefixEvaluation();
+            //StackQuestions.InfixToPrefix();
+            //StackQuestions.InfixToPostfix();
+            //StackQuestions.InfixToPostfix();
+            //StackQuestions.InfixToPrefix();
+
+
+            //-------------Queue------------
+            //QueueQuestions.QueueOperations();
+            //QueueQuestions.QueueUsingStacks();
+            //QueueQuestions.StackUsingQueue_PushEasy();
+            //QueueQuestions.StackUsingQueue_PopEasy();
+
+
+            //-------------Binary Tree---------
+            //BinaryTreeQuestions.Traversal();
+            //BinaryTreeQuestions.IsBalanced();
+            //BinaryTreeQuestions.Diameter();
+            //BinaryTreeQuestions.HeightOfTree();
+            //BinaryTreeQuestions.SumNodes();
+            //BinaryTreeQuestions.SumReplacement();
+            //BinaryTreeQuestions.LeftView();
+            //BinaryTreeQuestions.RightView();
+            //BinaryTreeQuestions.LevelOrderTraversal();
+            //BinaryTreeQuestions.SumAtKthLevel();
+            //BinaryTreeQuestions.ConstructBinaryTreeFromPostOrder();
+            //BinaryTreeQuestions.ConstructBinaryTreeFromPreorder();
+            //BinaryTreeQuestions.LowestCommonAncestor();
+            //BinaryTreeQuestions.ShortestDistanceBetweenTwoNodes();
+            //BinaryTreeQuestions.MaxPossibleSum();
+            //BinaryTreeQuestions.FindNodesAtKDistance();
+            //BinaryTreeQuestions.Flatten();
+
+
+            //-------------Binary Search Tree---------
+            //BinarySearchTreeQuestions.InsertIntoBST();
+            //BinarySearchTreeQuestions.SearchInBST();
+            //BinarySearchTreeQuestions.DeleteFromBST();
+            //BinarySearchTreeQuestions.BSTFromPreOrder();
+            //BinarySearchTreeQuestions.IsBST();
+            //BinarySearchTreeQuestions.BalancedBSTFromSortedArray();
+            //BinarySearchTreeQuestions.IdenticalBST();
+            //BinarySearchTreeQuestions.RecoverBST();
+            //BinarySearchTreeQuestions.LargestBSTInBT();
+            //BinarySearchTreeQuestions.ZigZagTraversal();
+            //BinarySearchTreeQuestions.AllPossibleBSTForN();
+
+
+            // ------------ Heaps ----------------
+            //HeapsQuestions.InsertIntoHeap();
+            //HeapsQuestions.DeleteFromHeap();
+            //HeapsQuestions.HeapSort();
+            //HeapsQuestions.Heapify();
+            //HeapsQuestions.MedianOfRunningStream();
+            //HeapsQuestions.MergeKSortedArrays();
+            //HeapsQuestions.SmallestSequenceWithSumAtleastK();
+
+
+            // ------------ Hashing --------------
+            //HashingQuestions.Chaining();
+            //HashingQuestions.LinearProbing();
+            //HashingQuestions.QuadraticProbing();
+            //HashingQuestions.VerticalOrderPrint();
+            //HashingQuestions.TopKMostFrequentElements();
+            //HashingQuestions.FirstKDistinctElements();
+            //HashingQuestions.NumberOfSubarraysWithSumZero(); //todo_question
+            //HashingQuestions.SudokuSolver(); //todo_question
+
+
         }
     }
 }
