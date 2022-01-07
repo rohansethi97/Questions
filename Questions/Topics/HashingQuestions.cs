@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Questions
 {
@@ -132,7 +133,7 @@ namespace Questions
         internal static void QuadraticProbing()
         {
             var arr = Helper.ReadElementsInOneLine();
-            var hashTable = ConvertToHashTableClosedAddressing(arr,true);
+            var hashTable = ConvertToHashTableClosedAddressing(arr, true);
             Helper.WriteLine(arr);
 
             Helper.WriteLine($"Search {arr[0]}: {hashTable.Search(arr[0])}");
@@ -140,6 +141,100 @@ namespace Questions
             Helper.WriteLine($"Delete {arr[0]}: {hashTable.Delete(arr[0])}");
             Helper.WriteLine($"Search {arr[0]}: {hashTable.Search(arr[0])}"); ;
         }
+
+        /// <summary>
+        /// Print vertical order of a Binary tree
+        /// </summary>
+        /*
+         *  I:      1
+         *       2     3
+         *     4   5 6   7
+         *  O: 4 2 1 5 6 3 7   
+         */
+        public static void VerticalOrderPrint()
+        {
+            BinaryTreeQuestions.VerticalOrderPrint();
+        }
+
+        /// <summary>
+        /// Given an array and K, output Top K Most Frequent Elements
+        /// </summary>
+        public static void TopKMostFrequentElements()
+        {
+            var arr = Helper.ReadElementsInOneLine();
+            var k = Helper.ReadN();
+
+            var hashMap = new Dictionary<int, int>();
+            foreach (int a in arr)
+            {
+                if (!hashMap.ContainsKey(a)) hashMap[a] = 0;
+                hashMap[a]++;
+            }
+
+            var heap = new Heap_Pair();
+            var ans = new List<int>();
+            foreach (var mapping in hashMap)
+            {
+                heap.Insert((mapping.Value, mapping.Key));
+            }
+
+            for (int i = 0; i < k; i++)
+            {
+                ans.Add(heap.Delete().Item2);
+            }
+
+            Helper.WriteLine(ans.ToArray());
+        }
+
+        /// <summary>
+        /// Given an array and number k, find first k distinct elements and their frequency
+        /// </summary>
+        public static void FirstKDistinctElements()
+        {
+            var arr = Helper.ReadElementsInOneLine();
+            var k = Helper.ReadN();
+
+            var hashMap = new Dictionary<int, int>();
+            
+            for (int i =0; i<arr.Length; i++)
+            {
+                var ele = arr[i];
+                if (!hashMap.ContainsKey(ele) && hashMap.Count >= k)
+                {
+                    break;
+                }
+
+                if (!hashMap.ContainsKey(ele)) hashMap[ele] = 0;
+                hashMap[ele]++;
+
+            }
+
+            foreach(var kv in hashMap)
+            {
+                Helper.WriteLine($"{kv.Key}: {kv.Value}");
+            }
+
+
+        }
+
+        // todo_question: array prefix sum
+        /// <summary>
+        /// Given an array, find all possible sub arrays that can have sum as 0
+        /// </summary>
+        public static void NumberOfSubarraysWithSumZero()
+        {
+            throw new NotImplementedException();
+        }
+
+        // todo_question: This requires backtracking
+        /// <summary>
+        /// Given a unsolved valid sudoku grid, write code which can solve the sudoku puzzle 
+        /// </summary>
+        public static void SudokuSolver()
+        {
+            throw new NotImplementedException();
+        }
+
 
         #region Helpers
         private static HashTable_OpenAddressing ConvertToHashTableOpenAddressing(int[] arr)
@@ -154,7 +249,7 @@ namespace Questions
             return hashTable;
         }
 
-        private static HashTable_ClosedAddressing ConvertToHashTableClosedAddressing(int[] arr, bool isQuadratic=false)
+        private static HashTable_ClosedAddressing ConvertToHashTableClosedAddressing(int[] arr, bool isQuadratic = false)
         {
             var hashTable = new HashTable_ClosedAddressing(arr.Length, isQuadratic ? ProbingType.Quadratic : ProbingType.Linear);
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Questions
 {
@@ -873,6 +875,49 @@ namespace Questions
 
             return left != -1 ? left : right;
         }
+
+        /// <summary>
+        /// Print vertical order of a Binary tree
+        /// </summary>
+        /*
+         *  I:      1
+         *       2     3
+         *     4   5 6   7
+         *  O: 4 2 1 5 6 3 7   
+         */
+        /// Approach
+        /// Recursively traverse each node
+        /// root will have n = 0
+        /// while calling left pass n--
+        /// while calling right pass n++
+        public static void VerticalOrderPrint()
+        {
+            var hashTable = new List<KeyValuePair<int, int>>();
+            var tree = CreateBinaryTree();
+            VerticalOrderPrint(tree, hashTable);
+
+            hashTable.Sort((a,b) => a.Key.CompareTo(b.Key));
+
+            Console.Write("{");
+            foreach (var kp in hashTable)
+            {
+                Console.Write($" {kp.Value}");
+            }
+            Console.WriteLine(" }");
+
+
+        }
+
+        private static void VerticalOrderPrint(TreeNode<int> root, List<KeyValuePair<int, int>> hashTable, int n = 0)
+        {
+            if (root is null) return;
+
+            hashTable.Add(new KeyValuePair<int, int>(n, root.Value));
+            VerticalOrderPrint(root.Left, hashTable, n - 1);
+            VerticalOrderPrint(root.Right, hashTable, n + 1);
+        }
+
+
 
         #region Helpers
 

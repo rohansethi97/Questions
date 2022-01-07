@@ -28,9 +28,9 @@
             //HashingQuestions.LinearProbing();
             //HashingQuestions.QuadraticProbing();
             //HashingQuestions.VerticalOrderPrint();
-            //HashingQuestions.NumberOfSubarraysWithSumZero();
-            //HashingQuestions.SlidingWindowTechnique();
             //HashingQuestions.TopKMostFrequentElements();
+            //HashingQuestions.FirstKDistinctElements();
+            //HashingQuestions.NumberOfSubarraysWithSumZero();
             //HashingQuestions.SudokuSolver();
 
             // ------------ Heaps ----------------
