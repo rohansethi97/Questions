@@ -37,8 +37,34 @@
 
             //--------------Array----------------
             //ArrayQuestions.MaxTillI();
+            //ArrayQuestions.SumOfAllSubarrays_Nested_Loop();
+            //ArrayQuestions.LongestArithmeticSubarray();
+            //ArrayQuestions.FirstRepeatingElement();
+            //ArrayQuestions.SubarrayWithGivenSum();
+            //ArrayQuestions.SmallestPositiveMissingNumber();
+            //ArrayQuestions.PrintAllSubarrays();
+            //ArrayQuestions.MaxSubarraySum_Iterative();
+            //ArrayQuestions.MaxSubarraySum_PrefixSum();
+            //ArrayQuestions.MaxSubarraySum_Kadane();
+            //ArrayQuestions.CircularSubarraySum();
+            //ArrayQuestions.PairSum();
 
+            //---------------2D arrays-----------
+            //Array2DQuestions.Operations();
+            //Array2DQuestions.SpiralOrderTraversal();
+            //Array2DQuestions.MatrixTranspose();
+            //Array2DQuestions.MatrixMultiplication();
+            //Array2DQuestions.MatrixSearch();
 
+            //---------------Characters arrays-----------
+            //CharArrayQuestions.Operations();
+            //CharArrayQuestions.Palindrome();
+            //CharArrayQuestions.LargestWordInCharArray();
+
+            //---------------String questions-------
+            //StringQuestions.Operations();
+            //StringQuestions.FormBiggestNumber();
+            //StringQuestions.HighestFrequencyAlphabet();
 
             //--------------Recursion-----------
             //RecursionQuestions.SumTillN();
