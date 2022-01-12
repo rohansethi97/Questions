@@ -315,7 +315,7 @@ namespace Questions
         }
 
         #region helper
-        private static int[,] ReadMatrix()
+        public static int[,] ReadMatrix()
         {
             Helper.WriteLine("Enter row & col");
             var row = Helper.ReadN();

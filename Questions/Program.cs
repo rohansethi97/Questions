@@ -84,6 +84,17 @@
             //RecursionQuestions.AllSubsequencesOfAString();
             //RecursionQuestions.AllSubsequencesASCIIOfAString();
             //RecursionQuestions.NthCatalanNumber();
+            //RecursionQuestions.LetterCombinationsPhone();
+            //RecursionQuestions.PermutationsOfAString();
+            //RecursionQuestions.CountPathsInSingleRow();
+            //RecursionQuestions.CountPathsInMaze();
+            //RecursionQuestions.TilingProblem();
+            //RecursionQuestions.FriendsPairingProblem();
+
+
+            //---------- Backtracking------------
+            //BacktrackingQuestions.RatInAMaze();
+            //BacktrackingQuestions.NQueenProblem();
 
 
             //-------------Linked List------------

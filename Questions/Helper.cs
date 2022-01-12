@@ -18,6 +18,13 @@
             return s.Split(separator).Select(s => int.Parse(s)).ToArray();
         }
 
+        public static char[] ReadElementsInOneLine_char(char separator = ' ')
+        {
+            Console.WriteLine("Enter in 1 line");
+            string s = Console.ReadLine().Trim();
+            return s.Split(separator).Select(s => char.Parse(s)).ToArray();
+        }
+
         public static int[] ReadLineByLine(int n)
         {
             Console.WriteLine("Enter elements 1 by 1");
