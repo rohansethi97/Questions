@@ -94,7 +94,7 @@
 
             //---------- Backtracking------------
             //BacktrackingQuestions.RatInAMaze();
-            //BacktrackingQuestions.NQueenProblem();
+            //BacktrackingQuestions.NQueen();
 
 
             //-------------Linked List------------

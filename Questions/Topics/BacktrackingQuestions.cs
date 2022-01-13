@@ -93,19 +93,97 @@ namespace Questions
         /// </summary>
         public static void NQueen()
         {
-            var n = Helper.ReadN();
-            var p = Helper.ReadN();
-            //var result = NToPowerP(n, p);
-            //Helper.WriteLine(result);
+            var size = Helper.ReadN();
+            var chessBoard = new int[size,size];
+
+            NQueen(chessBoard, size);
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (chessBoard[i, j] == 1)
+                    {
+                        Console.Write($"1 ");
+                    }
+                    else
+                    {
+                        Console.Write($"0 ");
+                    }
+                }
+                Console.WriteLine();
+            }
         }
 
-        private static int NQueen(int n, int p)
+        private static bool NQueen(int[,] board, int size, int row = 0)
         {
-            return 0;
-            //if (p == 0)
-            //    return 1;
+            if (row >= size) return true;
+            int col = 0;
 
-            //return n * NToPowerP(n, p - 1);
+            while (col < size)
+            {
+                if (board[row,col] != 2)
+                {
+                    board[row, col] = 1;
+                    // Better approach might be to implement isSafe function rather than updating board
+                    PositionQueen(board, size, row, col, false);
+                    var isViable = NQueen(board, size, row+1);
+                    
+                    if (isViable)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        board[row, col] = 0;
+                        PositionQueen(board, size, row, col, true);
+                    }
+                }
+                col++;
+            }
+
+            return false;
+        }
+
+        /*
+         *  0 1 2 3
+         *  0 1 2 3
+         *  0 1 2 3
+         *  0 1 2 3
+         */
+        private static void PositionQueen(int[,] board, int size, int row, int col, bool isReset)
+        {
+            int value = 2;
+            if (isReset) value = 0;
+
+            // bottom
+            for(int i=row+1; i<size; i++)
+            {
+                board[i, col] = value;
+            }
+
+            // left diagonal
+            int j = col - 1;
+            for(int i=row+1; i<size; i++)
+            {
+
+                if (j >= 0)
+                {
+                    board[i, j] = value;
+                    j--;
+                }
+            }
+
+            // right diagonals
+            j = col + 1;
+            for (int i = row + 1; i < size; i++)
+            {
+                if ( j < size)
+                {
+                    board[i, j] = value;
+                    j++;
+                }
+            }
         }
         // ------------------------------------
     }
