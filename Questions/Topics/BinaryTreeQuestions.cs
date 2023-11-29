@@ -119,6 +119,7 @@ namespace Questions
         */
         private static TreeNode<int> ConstructBinaryTreeFromPostorder(int[] inorder, int[] postorder, int start, int end, ref int idx)
         {
+            // start > end ensures no further node is created
             if (start > end || idx <= 0)
                 return null;
 
@@ -175,7 +176,7 @@ namespace Questions
 
             queue.Enqueue(node);
             queue.Enqueue(null);
-
+            
             while (!queue.IsEmpty())
             {
                 var val = queue.Peek();

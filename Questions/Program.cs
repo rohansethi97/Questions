@@ -141,7 +141,7 @@
             //BinaryTreeQuestions.RightView();
             //BinaryTreeQuestions.LevelOrderTraversal();
             //BinaryTreeQuestions.SumAtKthLevel();
-            //BinaryTreeQuestions.ConstructBinaryTreeFromPostOrder();
+            BinaryTreeQuestions.ConstructBinaryTreeFromPostOrder();
             //BinaryTreeQuestions.ConstructBinaryTreeFromPreorder();
             //BinaryTreeQuestions.LowestCommonAncestor();
             //BinaryTreeQuestions.ShortestDistanceBetweenTwoNodes();
@@ -151,7 +151,7 @@
 
 
             //-------------Binary Search Tree---------
-            //BinarySearchTreeQuestions.InsertIntoBST();
+            BinarySearchTreeQuestions.InsertIntoBST();
             //BinarySearchTreeQuestions.SearchInBST();
             //BinarySearchTreeQuestions.DeleteFromBST();
             //BinarySearchTreeQuestions.BSTFromPreOrder();
@@ -168,14 +168,14 @@
             //HeapsQuestions.InsertIntoHeap();
             //HeapsQuestions.DeleteFromHeap();
             //HeapsQuestions.HeapSort();
-            //HeapsQuestions.Heapify();
+            HeapsQuestions.Heapify();
             //HeapsQuestions.MedianOfRunningStream();
             //HeapsQuestions.MergeKSortedArrays();
             //HeapsQuestions.SmallestSequenceWithSumAtleastK();
 
 
             // ------------ Hashing --------------
-            //HashingQuestions.Chaining();
+            HashingQuestions.Chaining();
             //HashingQuestions.LinearProbing();
             //HashingQuestions.QuadraticProbing();
             //HashingQuestions.VerticalOrderPrint();

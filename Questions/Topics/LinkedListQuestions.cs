@@ -193,6 +193,9 @@
         /// <summary>
         /// Question: Reverse a linked list
         /// </summary>
+        /// I: 1 2 3 4 5 6, 2
+        /// O: 2 1 4 3 6 5
+        /// 
         public static void ReverseKNodes_Iterative()
         {
             var arr = Helper.ReadElementsInOneLine();
@@ -258,6 +261,8 @@
 
         }
 
+        /// I: 1 2 3 4 5 6, 2
+        /// O: 2 1 4 3 6 5
         private static Node<int> ReverseKNodes_Recursive(Node<int> node, int k)
         {
             if (node == null) return null;

@@ -1,4 +1,6 @@
-﻿namespace Questions
+﻿using System.Collections.Generic;
+
+namespace Questions
 {
     public class SearchingQuestions
     {

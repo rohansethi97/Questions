@@ -159,7 +159,7 @@ namespace Questions
          * Adding 1 2 3 4 5 to stack
          * Stack: 5 4 3 2 1
          *  Push: X 5 4 3 2 1
-         *  Pop:  5 3 2 1 1
+         *  Pop:  4 3 2 1
          * 
          * Queue: 1 2 3 4 5
          *  Push: 1 2 3 4 5 X

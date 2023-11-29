@@ -300,6 +300,9 @@ namespace Questions
             ZigZagTraversal(tree);
         }
 
+        System.Collections.Generic.LinkedList<int> list = new System.Collections.Generic.LinkedList<int>();
+        
+
         private static void ZigZagTraversal(TreeNode<int> tree)
         {
             if (tree == null) return;
@@ -549,14 +552,12 @@ namespace Questions
 
                 for(int j = 0; j < leftSubtrees.Count; j++)
                 {
-                    var left = leftSubtrees[j];
                     for (int k = 0; k < rightSubtrees.Count; k++)
                     {
-                        var right = rightSubtrees[k];
                         var node = new TreeNode<int>(i);
                         
-                        node.Left = left;
-                        node.Right = right;
+                        node.Left = leftSubtrees[j];
+                        node.Right = rightSubtrees[k];
 
                         list.Add(node);
                     }

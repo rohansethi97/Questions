@@ -200,6 +200,8 @@
             }
         }
 
+
+        // 5 4 2 1 3
         private static int Partition(int[] arr, int start, int end)
         {
             int pivot = arr[end];
